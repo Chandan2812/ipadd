@@ -6,13 +6,8 @@ const logger=winston.createLogger({
     level:"info",
     format:winston.format.json(),
     transports:[
-        new mongoDB({
-            db:process.env.MONGO_URL,
-            collection:"logs",
-            options:{
-                useUnifiedTopology:true
-            }
-        })
+         new winston.transports.Console(),
+    new winston.transports.File({ filename: 'combined.log' })
     ]
 })
 
